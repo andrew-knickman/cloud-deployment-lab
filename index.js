@@ -21,7 +21,7 @@ app.use(logger('dev'));
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', (request, response) => {
-  response.send('Hello World!')
+  response.send('Hello world!')
 });
 
 app.get('/greeting', (request, response) => {
