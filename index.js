@@ -18,7 +18,7 @@ app.use(logger('dev'));
 
   For example, we could start the app on port 6000 by running `PORT=6000 npm start`
 */
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 5000/greeting));
 
 app.get('/', (request, response) => {
   response.send('Hello world!')
@@ -38,9 +38,9 @@ app.get('/greeting', (request, response) => {
   response.status(200).send(message);
 });
 
-app.get('/todo', async (request, response) => {
+app.get('/todo', async (request, response), number => {
   try {
-    const todo = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    const todo = await axios.get('https://jsonplaceholder.typicode.com/todos/' + number)
       .then(res => res.data);
     response.json(todo);
   } catch (e) {
